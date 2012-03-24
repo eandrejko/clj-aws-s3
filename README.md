@@ -10,13 +10,13 @@ and protocols for uploading different types of data.
 Currently the library supports functions to create and delete buckets,
 and to list, get, and put objects and their metadata.
 
-It doesn't support ACLs yet, but will do in a future release.
+Simple ACL support is included allowing setting object ACL to a canned ACL such as private, public readable, or public read write.
 
 ## Install
 
 Add the following dependency to your `project.clj` file:
 
-    [clj-aws-s3 "0.2.1"]
+    [eandrejko/clj-aws-s3 "0.2.2"]
 
 ## Example
 
@@ -29,6 +29,8 @@ Add the following dependency to your `project.clj` file:
 
 (s3/put-object cred "my-bucket" "some-key" "some-value")
 
+(s3/set-object-acl cred "my-bucket" "some-key" :public-read)
+
 (println (slurp (:content (s3/get-object cred "my-bucket" "some-key"))))
 ```
 
@@ -38,6 +40,6 @@ Add the following dependency to your `project.clj` file:
 
 ## License
 
-Copyright (C) 2012 James Reeves
+Copyright (C) 2012 James Reeves, Erik Andrejko
 
 Distributed under the Eclipse Public License, the same as Clojure.
