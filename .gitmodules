@@ -1,0 +1,3 @@
+[submodule "autodoc"]
+	path = autodoc
+	url = git@github.com:eandrejko/clj-aws-s3.git

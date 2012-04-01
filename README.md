@@ -60,7 +60,7 @@ These options can be combined and additional key value pairs are stored as meta-
 
 ## Documentation
 
-* [API docs](http://weavejester.github.com/clj-aws-s3/)
+* [API docs](http://eandrejko.github.com/clj-aws-s3/)
 
 ## License
 
