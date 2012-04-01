@@ -1,1 +1,348 @@
-My GitHub Page
+<html>
+  <head>
+    <title>aws.sdk.s3 - clj-aws-s3 API documentation</title>
+    <link href="static/favicon.png" rel="icon" />
+    <link href="static/favicon.png" rel="shortcut icon" />
+    <link media="all" type="text/css" href="static/clojure.css" rel="stylesheet" />
+    <link media="all" type="text/css" href="static/wiki.css" rel="stylesheet" />
+    <link media="all" type="text/css" href="static/internal.css" rel="stylesheet" />
+    <style>.menuWrapper{height: 36px;}</style>
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" href="http://www.wikispaces.com/_/2009051601/s/internal_ie.css" type="text/css" />
+    <![endif]-->
+  </head>
+<!--
+This document was auto-generated from the source by the clojure autodoc system.
+To report errors or ask questions about the overall documentation structure, formatting,
+etc., contact Tom Faulhaber (google mail name: tomfaulhaber).
+For errors in the documentation of a particular namespace, contact the author of that
+namespace.
+-->
+  <body>
+    <div id="AllContentContainer">
+      <div id="Header">
+	<a id="Logo" href="index.html"><img alt="Clojure" height="100" width="100" src="static/clojure-icon.gif" /></a>
+	<h1><a title="page header title" id="page-header" href="index.html">clj-aws-s3</a></h1>
+      </div>
+      <div id="leftcolumn"><div style="text-align: center;"></div>
+<div class="menu">
+  <div class="WikiCustomNav WikiElement wiki">
+    <span class="toc-header"><span id="project-name">clj-aws-s3</span> <span id="version"></span> API</span><br />
+    <ul>
+      <li><a class="wiki_link" href="index.html">Overview</a></li>
+      <li><a class="wiki_link" href="api-index.html">API Index</a></li>
+    </ul>
+    
+    
+    <a href="http://clojure.org" class="wiki_link">Clojure Home</a>
+  </div>
+</div>
+</div>
+      <div id="rightcolumn">
+	<div id="Content">
+	  <div class="contentBox"><div class="innerContentBox">
+              <div id="content_view" class="wiki wikiPage">
+                <div id="right-sidebar"><div id="toc">
+  <h1 class="nopad">Table of Contents</h1>
+  <div style="margin-left: 1em;" class="toc-section">
+    <a href="#toc0">Overview</a>
+    <div style="margin-left: 1em;" class="toc-entry">
+      <a href="#aws.sdk.s3/Mappable">Mappable</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#aws.sdk.s3/ToPutRequest">ToPutRequest</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#aws.sdk.s3/bucket-exists?">bucket-exists?</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#aws.sdk.s3/copy-object">copy-object</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#aws.sdk.s3/create-bucket">create-bucket</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#aws.sdk.s3/delete-bucket">delete-bucket</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#aws.sdk.s3/delete-object">delete-object</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#aws.sdk.s3/get-object">get-object</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#aws.sdk.s3/get-object-acl">get-object-acl</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#aws.sdk.s3/get-object-metadata">get-object-metadata</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#aws.sdk.s3/list-objects">list-objects</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#aws.sdk.s3/object-exists?">object-exists?</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#aws.sdk.s3/put-object">put-object</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#aws.sdk.s3/put-request">put-request</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#aws.sdk.s3/set-object-acl">set-object-acl</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#aws.sdk.s3/to-map">to-map</a>
+    </div>
+    <br />
+  </div>
+</div>
+</div>
+                <div id="content-tag"><h1 id="overview">API for <span id="namespace-name">aws.sdk.s3</span>
+  - <span id="header-project">clj-aws-s3</span> <span id="header-version"></span>
+  </h1>
+
+<br />Full namespace name: <span id="long-name">aws.sdk.s3</span>
+<p></p>
+<h2>Overview</h2>
+<pre id="namespace-docstr">Functions to access the Amazon S3 storage service.
+
+Each function takes a map of credentials as its first argument. The
+credentials map should contain an :access-key key and a :secret-key key.</pre>
+
+
+<br />
+<h2>Public Variables and Functions</h2>
+<div id="var-entry">
+  <br />
+  <hr />
+  <h2 id="aws.sdk.s3/Mappable">Mappable</h2>
+  <span id="var-type">var</span><br />
+  <pre id="var-usage"></pre>
+  <pre id="var-docstr">Convert a value into a Clojure map.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <br />
+  <hr />
+  <h2 id="aws.sdk.s3/ToPutRequest">ToPutRequest</h2>
+  <span id="var-type">var</span><br />
+  <pre id="var-usage"></pre>
+  <pre id="var-docstr">A protocol for constructing a map that represents an S3 put request.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <br />
+  <hr />
+  <h2 id="aws.sdk.s3/bucket-exists?">bucket-exists?</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (bucket-exists? cred name)
+</pre>
+  <pre id="var-docstr">Returns true if the supplied bucket name already exists in S3.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <br />
+  <hr />
+  <h2 id="aws.sdk.s3/copy-object">copy-object</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (copy-object cred bucket src-key dest-key)
+       (copy-object cred src-bucket src-key dest-bucket dest-key)
+</pre>
+  <pre id="var-docstr">Copy an existing S3 object to another key.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <br />
+  <hr />
+  <h2 id="aws.sdk.s3/create-bucket">create-bucket</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (create-bucket cred name)
+</pre>
+  <pre id="var-docstr">Create a new S3 bucket with the supplied name.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <br />
+  <hr />
+  <h2 id="aws.sdk.s3/delete-bucket">delete-bucket</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (delete-bucket cred name)
+</pre>
+  <pre id="var-docstr">Delete the S3 bucket with the supplied name.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <br />
+  <hr />
+  <h2 id="aws.sdk.s3/delete-object">delete-object</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (delete-object cred bucket key)
+</pre>
+  <pre id="var-docstr">Delete an object from an S3 bucket.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <br />
+  <hr />
+  <h2 id="aws.sdk.s3/get-object">get-object</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (get-object cred bucket key)
+</pre>
+  <pre id="var-docstr">Get an object from an S3 bucket. The object is returned as a map with the
+following keys:
+  :content  - an InputStream to the content
+  :metadata - a map of the object's metadata
+  :bucket   - the name of the bucket
+  :key      - the object's key</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <br />
+  <hr />
+  <h2 id="aws.sdk.s3/get-object-acl">get-object-acl</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (get-object-acl cred bucket key)
+</pre>
+  <pre id="var-docstr">Returns object ACL (AccessControlList)</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <br />
+  <hr />
+  <h2 id="aws.sdk.s3/get-object-metadata">get-object-metadata</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (get-object-metadata cred bucket key)
+</pre>
+  <pre id="var-docstr">Get an object's metadata from a bucket. The metadata is a map with the
+following keys:
+  :cache-control          - the CacheControl HTTP header
+  :content-disposition    - the ContentDisposition HTTP header
+  :content-encoding       - the character encoding of the content
+  :content-length         - the length of the content in bytes
+  :content-md5            - the MD5 hash of the content
+  :content-type           - the mime-type of the content
+  :etag                   - the HTTP ETag header
+  :last-modified          - the last modified date
+  :server-side-encryption - the server-side encryption algorithm</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <br />
+  <hr />
+  <h2 id="aws.sdk.s3/list-objects">list-objects</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (list-objects cred bucket &amp; [options])
+</pre>
+  <pre id="var-docstr">List the objects in an S3 bucket. A optional map of options may be supplied.
+Available options are:
+  :delimiter - read only keys up to the next delimiter (such as a '/')
+  :marker    - read objects after this key
+  :max-keys  - read only this many objects
+  :prefix    - read only objects with this prefix
+
+The object listing will be returned as a map containing the following keys:
+  :bucket          - the name of the bucket
+  :prefix          - the supplied prefix (or nil if none supplied)
+  :objects         - a list of objects
+  :common-prefixes - the common prefixes of keys omitted by the delimiter
+  :max-keys        - the maximum number of objects to be returned
+  :truncated?      - true if the list of objects was truncated
+  :marker          - the marker of the listing
+  :next-marker     - the next marker of the listing</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <br />
+  <hr />
+  <h2 id="aws.sdk.s3/object-exists?">object-exists?</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (object-exists? cred bucket key)
+</pre>
+  <pre id="var-docstr">Returns true if an object exists in the supplied bucket and key.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <br />
+  <hr />
+  <h2 id="aws.sdk.s3/put-object">put-object</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (put-object cred bucket key value &amp; options)
+</pre>
+  <pre id="var-docstr">Put a value into an S3 bucket at the specified key. The value can be
+a String, InputStream or File (or anything that implements the ToPutRequest
+protocol).
+options is a list of key value pairs for setting ACL or object meta data:
+
+Acl options:
+:canned-acl - :public-read-write, :public-read, :private [default]
+
+Meta data options:
+:cache-control - cache control HTTP header
+:content-disposition - content disposition HTTP header
+:content-type - content type HTTP header
+
+additional key value pairs are set as user meta data on the object
+
+(s3/put-object cred "my-bucket" "some-key" "some-value"
+             :content-type "image/png"
+             :canned-acl :public-read
+             "metadata-key" "metadata-value")</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <br />
+  <hr />
+  <h2 id="aws.sdk.s3/put-request">put-request</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (put-request x)
+</pre>
+  <pre id="var-docstr">Convert a value into a put request.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <br />
+  <hr />
+  <h2 id="aws.sdk.s3/set-object-acl">set-object-acl</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (set-object-acl cred bucket key canned-acl)
+</pre>
+  <pre id="var-docstr">Sets object ACL to one of CannedAccessControlList where canned-acl is one of:
+
+- :private
+- :public-read
+- :public-read-write
+
+see: <a href="http://docs.amazonwebservices.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/model/CannedAccessControlList.html">http://docs.amazonwebservices.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/model/CannedAccessControlList.html</a></pre>
+  
+  
+  
+</div><div id="var-entry">
+  <br />
+  <hr />
+  <h2 id="aws.sdk.s3/to-map">to-map</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (to-map x)
+</pre>
+  <pre id="var-docstr">Return a map of the value.</pre>
+  
+  
+  
+</div>
+
+
+</div>
+              </div>
+            </div>
+          </div>
+	</div>
+	<div id="foot">
+	  <div style="text-align: center;" id="copyright">No copyright info </div>
+	</div>
+      </div>
+      <div id="DesignedBy">Logo &amp; site design by <a title="Visit Tom Hickey's website." href="http://www.tomhickey.com">Tom Hickey</a>.<br />
+      Clojure auto-documentation system by Tom Faulhaber.</div>
+    </div>
+    <!-- /AllContentContainer -->
+  </body>
+
+</html>
