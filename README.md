@@ -16,7 +16,7 @@ Simple ACL support is included allowing setting object ACL to a canned ACL such 
 
 Add the following dependency to your `project.clj` file:
 
-    [eandrejko/clj-aws-s3 "0.2.2"]
+    [eandrejko/clj-aws-s3 "0.2.3"]
 
 ## Example
 
