@@ -96,14 +96,48 @@
       (:input-stream request)
       (map->ObjectMetadata (dissoc request :input-stream)))))
 
+(defn- acl-from-keyword
+  [canned-acl]
+  (condp = canned-acl
+      :private           CannedAccessControlList/Private
+      :public-read       CannedAccessControlList/PublicRead
+      :public-read-write CannedAccessControlList/PublicReadWrite))
+
+(defn- apply-canned-access-policy
+  "applys a canned access policy, if specified, in options to a PutObjectRequest"
+  [options #^PutObjectRequest request]
+  (if-let [canned-acl (:canned-acl options)]
+    (doto request
+      (.setCannedAcl (acl-from-keyword canned-acl)))
+    request))
+
 (defn put-object
   "Put a value into an S3 bucket at the specified key. The value can be
   a String, InputStream or File (or anything that implements the ToPutRequest
-  protocol)."
-  [cred bucket key value]
-  (->> (put-request value)
-       (->PutObjectRequest bucket key)
-       (.putObject (s3-client cred))))
+  protocol).
+  options is a list of key value pairs for setting ACL or object meta data:
+
+  Acl options:
+  :canned-acl - :public-read-write, :public-read, :private [default]
+
+  Meta data options:
+  :cache-control - cache control HTTP header
+  :content-disposition - content disposition HTTP header
+  :content-type - content type HTTP header
+
+  additional key value pairs are set as user meta data on the object
+
+  (s3/put-object cred \"my-bucket\" \"some-key\" \"some-value\"
+               :content-type \"image/png\"
+               :canned-acl :public-read
+               \"metadata-key\" \"metadata-value\")"
+  [cred bucket key value & options]
+  (let [options (apply hash-map options)
+        options (merge (put-request value) options)]
+    (->> (dissoc options :canned-acl)
+         (->PutObjectRequest bucket key)
+         (apply-canned-access-policy options)
+         (.putObject (s3-client cred)))))
 
 (defprotocol ^{:no-doc true} Mappable
   "Convert a value into a Clojure map."
@@ -246,8 +280,5 @@
 
    see: http://docs.amazonwebservices.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/s3/model/CannedAccessControlList.html"
   [cred bucket key canned-acl]
-  (let [acl (condp = canned-acl
-                :private           CannedAccessControlList/Private
-                :public-read       CannedAccessControlList/PublicRead
-                :public-read-write CannedAccessControlList/PublicReadWrite)]
+  (let [acl (acl-from-keyword canned-acl)]
     (.setObjectAcl (s3-client cred) bucket key acl)))

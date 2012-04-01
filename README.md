@@ -34,6 +34,30 @@ Add the following dependency to your `project.clj` file:
 (println (slurp (:content (s3/get-object cred "my-bucket" "some-key"))))
 ```
 
+## Extended Put Support
+
+Objects can be assigned a canned ACL at creation type:
+
+```clojure
+(s3/put-object cred "my-bucket" "some-key" "some-value" :canned-acl :public-read)
+```
+
+The `content-type` can also be set at object creation time:
+
+```clojure
+(s3/put-object cred "my-bucket" "some-key" "some-value" :content-type "image/png")
+```
+
+These options can be combined and additional key value pairs are stored as meta-data on the object:
+
+```clojure
+(s3/put-object cred "my-bucket" "some-key" "some-value" 
+               :content-type "image/png"
+               :canned-acl :public-read
+               "metadata-key" "metadata-value")
+```
+
+
 ## Documentation
 
 * [API docs](http://weavejester.github.com/clj-aws-s3/)
